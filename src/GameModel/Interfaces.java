@@ -6,21 +6,19 @@ package GameModel;
 import java.util.List;
 import java.util.Set;
 
+import Commons.ErrorCodes.Code;
+
 /**
  * @author Павел
  * Интерфейс для элемента.
  * Проверка первосходства, получение значения и список превосходимых элементов
  */
-interface IElement {
-	boolean exceed(IElement elm);
-	Object getValue();
-	Object[] getWeakers();
-}
 
 interface IStone{
 	void forceFlip();
-	void Flip(IElement forcing);
-	IElement getFace();
+//	решение, переворачиват ли один камень другой, будет приниматся в"Доске"
+//	void Flip(IElement forcing);
+	int getFace();
 }
 
 interface IPocket{
@@ -49,5 +47,24 @@ interface IPlayer{
 interface IBoard{
 	int putStone(ICoordinate point, IStone stone);
 	boolean checkWin();
+}
+
+
+interface IModel{
+//	public IPocket getStonePouch();
+//	public void setStonePouch(IPocket pouch);
+//	
+//	public IElement getElementEssences();
+//	public void setElementsEssence(IElement elementsEssence);
+//	
+//	public IBoard getBoard();
+//	public void setBoard(IBoard board);
+	
+	public void init();
+	int currentPlayer();
+	Code makeMove(int stoneNum, ICoordinate point);
+	Code moveStone(ICoordinate from, ICoordinate to);
+	Code flipStone(ICoordinate point);
+	
 }
 
